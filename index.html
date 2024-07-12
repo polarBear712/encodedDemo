@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHA1 + BASE64</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+
+<body>
+    <textarea id="inputText" rows="10" cols="50" placeholder="..."></textarea>
+    <p>Encoded Output:</p>
+    <p id="outputText"></p>
+
+    <script>
+        const inputText = document.getElementById('inputText');
+        const outputText = document.getElementById('outputText');
+
+        inputText.addEventListener('input', function () {
+            const str = inputText.value;
+
+            const sha1Hash = CryptoJS.SHA1(str);
+
+            const base64Encoded = CryptoJS.enc.Base64.stringify(sha1Hash);
+
+            outputText.textContent = base64Encoded;
+        });
+    </script>
+</body>
+
+</html>
